@@ -3,6 +3,7 @@ package com.haddaji.tasks.services.impl;
 import com.haddaji.tasks.domain.entities.TaskList;
 import com.haddaji.tasks.repositories.TaskListRepository;
 import com.haddaji.tasks.services.TaskListService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -50,6 +51,7 @@ public class TaskListServiceImpl implements TaskListService {
         return taskListRepository.findById(id) ;
     }
 
+    @Transactional
     @Override
     public TaskList updateTaskList(UUID id, TaskList taskList) {
         if (taskList.getId() == null){
